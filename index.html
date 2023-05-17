@@ -29,7 +29,10 @@
   </div>
   <a-scene cursor="rayOrigin: mouse" raycaster="objects: .link">
     <a-assets>
-      <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
+      <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+      <!--<img id="test1" crossorigin="anonymous" src="./images/2.jpg">
+      <img id="test2" crossorigin="anonymous" src="./images/3.jpg">
+      <img id="test3" crossorigin="anonymous" src="./images/4.jpg">-->
       <img id="city-thumb" crossorigin="anonymous"
         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
       <img id="cubes-thumb" crossorigin="anonymous"
@@ -51,7 +54,10 @@
       proxy-event="event: fade; to: #portal; as: roomChange">
     </a-sky>
 
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#city;title:My portal A" position="-5 0 0"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#city;title:My portal A" position="0 0 0"></a-entity>
+    <!--<a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#test1;title:My portal A" position="-5 0 0"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#test2;title:My portal A" position="0 -5 0"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#test3;title:My portal A" position="0 -5 0"></a-entity>-->
     <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#city;title:My portal AB" position="0 5 -5"></a-entity>
     <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#city;from:#sechelt;title:My portal X" position="5 0 -5"></a-entity>
     <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#sechelt;from:#cubes;title:My portal Y" position="0 0 -5"></a-entity>

@@ -41,7 +41,10 @@ AFRAME.registerComponent('portal', {
     play: function () { }
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    console.log('ready');
+    document.querySelector("#pointer").onclick = function() {
+        console.log('click');
+    }
 
-document.querySelector("#pointer").onclick = function() {
-    consol.log('click');
-}
+});
