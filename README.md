@@ -39,8 +39,7 @@ A web aplication for virtual walks that are suited for open days. View each room
         "name": "Chemie",
         "links": [
             "Physik",
-            "Musik",
-            "Chemie"
+            "Musik"
         ]
     },
     {

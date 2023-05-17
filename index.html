@@ -29,7 +29,22 @@
   </div>
   <a-scene cursor="rayOrigin: mouse" raycaster="objects: .link">
     <a-assets>
-      <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+      <img id="street" crossorigin="anonymous" src="./images/street.jpg">
+      <img id="street-thumb" crossorigin="anonymous"
+           src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+      <img id="urfoo" crossorigin="anonymous" src="./images/urfoo.jpg">
+      <img id="urfoo-thumb" crossorigin="anonymous"
+           src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+      <img id="enter" crossorigin="anonymous" src="./images/2_floor_max.jpg">
+      <img id="enter-thumb" crossorigin="anonymous"
+           src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+      <img id="ladder" crossorigin="anonymous" src="./images/2_floor_max.jpg">
+      <img id="ladder-thumb" crossorigin="anonymous"
+           src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+      <img id="ladder2" crossorigin="anonymous" src="./images/2_floor_max.jpg">
+      <img id="ladder2-thumb" crossorigin="anonymous"
+           src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+      <img id="city" crossorigin="anonymous" src="./images/2_floor_max.jpg">
       <!--<img id="test1" crossorigin="anonymous" src="./images/2.jpg">
       <img id="test2" crossorigin="anonymous" src="./images/3.jpg">
       <img id="test3" crossorigin="anonymous" src="./images/4.jpg">-->
@@ -47,20 +62,24 @@
     </a-assets>
 
     <!-- 360-degree image. -->
-    <a-sky id="image-360" radius="10" src="#city"
-      animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
-      animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"
-      anchor="property: src; delay: 300" 
-      proxy-event="event: fade; to: #portal; as: roomChange">
+    <a-sky id="image-360" radius="5" src="#street"
+           animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+           animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"
+           anchor="property: src; delay: 300"
+           proxy-event="event: fade; to: #portal; as: roomChange">
     </a-sky>
 
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#city;title:My portal A" position="0 0 0"></a-entity>
-    <!--<a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#test1;title:My portal A" position="-5 0 0"></a-entity>
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#test2;title:My portal A" position="0 -5 0"></a-entity>
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#test3;title:My portal A" position="0 -5 0"></a-entity>-->
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#city;title:My portal AB" position="0 5 -5"></a-entity>
+    <!--<a-entity id="portal" portal="domain:#image-360; startEvent: roomChange; to:#street;from:#urfoo;title:My portal" position="0 0 0"></a-entity>-->
+    <!--<a-entity id="portal" portal="domain:#image-360; startEvent: roomChange; to:#street;from:#urfoo;title:My portal" position="-5 0 0"></a-entity>-->
+    <!--<a-entity id="portal" portal="domain:#image-360; startEvent: roomChange; to:#urfoo;from:#enter;title:My portal 2" position="-3 0 0"></a-entity>-->
+    <!-- <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#urfoo;from:#enter;title:Войти внутрь УРФУ" position="-5 0 0"></a-entity>-->
+    <!--<a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#enter;from:#enter;title:Войти" position="-5 0 0"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#enter;from:#enter;title:My portal A" position="-5 0 0"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#urfoo;from:#enter;title:My portal A" position="-5 0 0"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#city;title:My portal A" position="-5 0 0"></a-entity>
     <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#city;from:#sechelt;title:My portal X" position="5 0 -5"></a-entity>
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#sechelt;from:#cubes;title:My portal Y" position="0 0 -5"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#sechelt;from:#cubes;title:My portal Y" position="0 0 -5"></a-entity>-->
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#street;from:#urfoo;title:My portal AB" position="-3.155 0.150 -0.9" rotation="0 40 0"></a-entity>
 
     <!-- Camera + cursor. -->
     <a-entity camera look-controls>

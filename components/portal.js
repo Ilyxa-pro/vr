@@ -41,6 +41,7 @@ AFRAME.registerComponent('portal', {
     play: function () { }
 });
 
+/*
 document.addEventListener("DOMContentLoaded", function() {
     console.log('ready');
     document.querySelector("#pointer").onclick = function() {
@@ -48,3 +49,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
+*/
+
