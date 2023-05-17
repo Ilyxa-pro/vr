@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>360&deg; Image Gallery</title>
+  <meta name="description" content="360&deg; Image Gallery - A-Frame">
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+  <!-- <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script> -->
+  <!-- <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script> -->
+  <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+  <script src="components/anchor.js"></script>
+  <script src="components/portal.js"></script>
+</head>
+
+<body>
+
+  <div id="id" style="width: 200px;
+    height: 200px;
+    background-color: #000;
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    z-index: 2;">
+    <div class="wrapper" style="height: 100%; width: 100%; position: relative;">
+      <div class="point" id="pointer" style="position: absolute; left: 20px; top: 20px; width: 20px; border-radius: 50%; height: 20px; background-color: #fff"></div>
+    </div>
+  </div>
+  <a-scene cursor="rayOrigin: mouse" raycaster="objects: .link">
+    <a-assets>
+      <img id="city" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/city.jpg">
+      <img id="city-thumb" crossorigin="anonymous"
+        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+      <img id="cubes-thumb" crossorigin="anonymous"
+        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
+      <img id="sechelt-thumb" crossorigin="anonymous"
+        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
+      <audio id="click-sound" crossorigin="anonymous"
+        src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+      <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
+      <img id="sechelt" crossorigin="anonymous"
+        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+    </a-assets>
+
+    <!-- 360-degree image. -->
+    <a-sky id="image-360" radius="10" src="#city"
+      animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+      animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"
+      anchor="property: src; delay: 300" 
+      proxy-event="event: fade; to: #portal; as: roomChange">
+    </a-sky>
+
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#city;title:My portal A" position="-5 0 0"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#city;title:My portal AB" position="0 5 -5"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#city;from:#sechelt;title:My portal X" position="5 0 -5"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#sechelt;from:#cubes;title:My portal Y" position="0 0 -5"></a-entity>
+
+    <!-- Camera + cursor. -->
+    <a-entity camera look-controls>
+      <a-cursor id="cursor"
+        animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+        animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+        event-set__mouseenter="_event: mouseenter; color: springgreen"
+        event-set__mouseleave="_event: mouseleave; color: black" raycaster="objects: .link"></a-cursor>
+    </a-entity>
+  </a-scene>
+
+  <script>
+    const sceneEl = document.querySelector('a-scene');
+    const images = sceneEl.querySelectorAll('a-assets img[id]');
+    if (![...images].some(elem => elem.id === location.hash)) {
+      location.hash = images[0].id
+    }
+  </script>
+</body>
+
+</html>
