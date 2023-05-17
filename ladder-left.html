@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>360&deg; Image Gallery</title>
+  <meta name="description" content="360&deg; Image Gallery - A-Frame">
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+  <!-- <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script> -->
+  <!-- <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script> -->
+  <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+  <script src="components/anchor.js"></script>
+  <script src="components/portal.js"></script>
+  <script src="components/link-controls.js"></script>
+</head>
+
+<body>
+
+<a-scene cursor="rayOrigin: mouse" raycaster="objects: .link">
+  <a-assets>
+    <img id="street" crossorigin="anonymous" src="./images/street.jpg">
+    <img id="street-thumb" crossorigin="anonymous"
+         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+    <img id="urfoo" crossorigin="anonymous" src="./images/urfoo.jpg">
+    <img id="urfoo-thumb" crossorigin="anonymous"
+         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+    <img id="enter" crossorigin="anonymous" src="./images/main.jpg">
+    <img id="enter-thumb" crossorigin="anonymous"
+         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+    <img id="ladder-right" crossorigin="anonymous" src="./images/ladder-right.jpg">
+    <img id="ladder-right-thumb" crossorigin="anonymous"
+         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+    <img id="ladder-left" crossorigin="anonymous" src="./images/ladder-left.jpg">
+    <img id="ladder-left-thumb" crossorigin="anonymous"
+         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+    <img id="floor-two" crossorigin="anonymous" src="./images/2_floor_max.jpg">
+    <img id="floor-two-thumb" crossorigin="anonymous"
+         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+  </a-assets>
+
+  <!-- 360-degree image. -->
+  <a-sky id="image-360" radius="5" src="#ladder-right"
+         animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+         animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"
+         anchor="property: src; delay: 300"
+         proxy-event="event: fade; to: #portal; as: roomChange">
+  </a-sky>
+
+  <!--<a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#street;from:#urfoo;title:URF" position="-4.200 0.600 -0.591" rotation="0 60 0" scale="0.5 0.5 0"></a-entity>
+  <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#urfoo;from:#enter;title:MAIN" position="-1.680 0.600 -3.440" rotation="0 40 0" scale="0.5 0.5 0"></a-entity>
+  <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#enter;from:#ladder-right;title:Right" position="-4.200 0.600 -0.591" rotation="0 230.000 0" scale="0.5 0.5 0"></a-entity>
+  <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#enter;from:#ladder-left;title:Left;" position="-3.058 0.239 -2.266" rotation="0 60 0" scale="0.5 0.5 0"></a-entity>-->
+
+  <a-link class="link" href="enter.html" position="3.011 -0.476 -0.278" rotation="0 -100 0" scale="0.3 0.3 0" title="On the 1nd floor" image="#enter"></a-link>
+  <a-link class="link" href="floor-two.html" position="3.290 2.312 -1.520" rotation="0 -90 0" scale="0.3 0.3 0" title="On the 2nd floor" image="#floor-two"></a-link>
+
+  <!-- Camera + cursor. -->
+  <a-entity camera look-controls>
+    <a-cursor id="cursor"
+              animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+              animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+              event-set__mouseenter="_event: mouseenter; color: springgreen"
+              event-set__mouseleave="_event: mouseleave; color: black" raycaster="objects: .link"></a-cursor>
+  </a-entity>
+</a-scene>
+
+<script>
+  const sceneEl = document.querySelector('a-scene');
+  const images = sceneEl.querySelectorAll('a-assets img[id]');
+  if (![...images].some(elem => elem.id === location.hash)) {
+    location.hash = images[0].id
+  }
+</script>
+</body>
+
+</html>

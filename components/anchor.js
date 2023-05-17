@@ -5,21 +5,21 @@ AFRAME.registerComponent('anchor', {
         delay: { type: 'int', default: 0 },
     },
     init: function () {
-        const {property, delay} = this.data;
+       /* const {property, delay} = this.data;
         this.setProperty(property, 0);
         // this.el.setAttribute(property, location.hash);
-        this.image = location.hash;
+        this.image = location.hash;*/
     },
     update: function () {
-        const {property, delay} = this.data;
-        window.onhashchange = () => this.setProperty(property, delay);
+        /*const {property, delay} = this.data;
+        window.onhashchange = () => this.setProperty(property, delay);*/
     },
     setProperty: function (property, delay) {
-        this.image = location.hash;
+        /*this.image = location.hash;
         this.el.emit("fade");
         window.setTimeout(() => {
             this.el.setAttribute(property, location.hash);
-        }, delay)
+        }, delay)*/
     },
     tick: function () { },
     remove: function () { },
