@@ -28,9 +28,10 @@ AFRAME.registerComponent('portal', {
 
         this.el.object3D.visible = is_in_scene;
         this.link.className = is_in_scene ? "link": "";
-
+        console.log('name ', this.data.title ,' ',this.data.to.id,  ' from ', is_from_in_scene, ' to ', is_to_in_scene);
+        console.log(is_from_in_scene ? "Back" : this.data.title);
         this.link.setAttribute('link', {
-            title: this.data.title,
+            title: is_from_in_scene ? "Back" : this.data.title,
             href: `#${is_to_in_scene ? this.data.from.id : this.data.to.id}`,
             image: is_to_in_scene ? this.data.from : this.data.to
         });
