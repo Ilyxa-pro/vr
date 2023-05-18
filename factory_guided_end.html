@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>360&deg; Image Gallery</title>
+  <meta name="description" content="360&deg; Image Gallery - A-Frame">
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+  <!-- <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script> -->
+  <!-- <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script> -->
+  <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+  <script src="components/anchor.js"></script>
+  <script src="components/portal.js"></script>
+  <script src="components/link-controls.js"></script>
+</head>
+
+<body>
+
+  <a-scene cursor="rayOrigin: mouse" raycaster="objects: .link">
+    <a-assets>
+      <img id="factory_entrance" crossorigin="anonymous" src="./images/toyota_factory_end.png">
+      <img id="factory_end" crossorigin="anonymous" src="./images/toyota_factory_enter.png">
+      <img id="factory_cistern" crossorigin="anonymous" src="./images/cistern.png">
+    </a-assets>
+
+    <!-- 360-degree image. -->
+    <a-sky id="image-360" radius="10" src="#factory_entrance"
+           animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+           animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"
+           anchor="property: src; delay: 300"
+           proxy-event="event: fade; to: #portal; as: roomChange">
+    </a-sky>
+    <a-link class="link" href="factory_guided_tour.html" title = "Repeat tour" position="-5 1 0" rotation="0 -90 0" image="#factory_end"></a-link>
+    <a-link class="link" href="factory_cistern.html" title = "Free exploration" position="-1 1 -7" rotation="0 20 0" image="#factory_cistern"></a-link>
+    <a-link class="link" href="factory_guided_tour.html" title = "Back to entrance" position="9 0.4 2.5" rotation="0 79 0" image="#factory_entrance"></a-link>
+    <!-- Camera + cursor. -->
+    <a-entity id="rig" rotation="0 90 0">
+        <a-camera id="camera"></a-camera>  
+    </a-entity>
+  </a-scene>
+
+  <script>
+    const sceneEl = document.querySelector('a-scene');
+    const images = sceneEl.querySelectorAll('a-assets img[id]');
+    if (![...images].some(elem => elem.id === location.hash)) {
+      location.hash = images[0].id
+    }
+  </script>
+</body>
+
+</html>

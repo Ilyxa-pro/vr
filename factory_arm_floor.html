@@ -19,21 +19,24 @@
 
   <a-scene cursor="rayOrigin: mouse" raycaster="objects: .link">
     <a-assets>
-      <img id="factory_entrance" crossorigin="anonymous" src="./images/toyota_factory_enter.png">
-      <img id="factory_end" crossorigin="anonymous" src="./images/toyota_factory_end.png">
+      <img id="factory_entrance" crossorigin="anonymous" src="./images/toyota_factory_end.png">
+      <img id="factory_end" crossorigin="anonymous" src="./images/toyota_factory_enter.png">
+      <img id="skybox" crossorigin="anonymous" src="./images/robofloor.png">
     </a-assets>
 
     <!-- 360-degree image. -->
-    <a-sky id="image-360" radius="10" src="#factory_entrance"
+    <a-sky id="image-360" radius="10" src="#skybox"
            animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
            animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"
            anchor="property: src; delay: 300"
            proxy-event="event: fade; to: #portal; as: roomChange">
     </a-sky>
-    <a-link class="link" href="factory_guided_tour.html" title = "Войти на завод" position="-3.5 -1 0" rotation="0 -90 0" image="#factory_end"></a-link>
-
+    <a-link class="link" href="factory_cistern.html" title = "Cistern Room" position="-1 2.5 5" rotation="0 0 0" image="#factory_end"></a-link>
+    <a-link class="link" href="factory_arm_catwalk.html" title = "Catwalk View" position="1 4.5 3" rotation="-45 0 0" image="#factory_cistern"></a-link>
+    <a-link class="link" href="factory_lathe_floor.html" title = "Lathe Room" position="9 -0.5 2.5" rotation="0 79 0" image="#factory_entrance"></a-link>
+    <a-link class="link" href="factory_lathe_catwalk.html" title = "Catwalk View" position="9 1 0" rotation="0 79 0" image="#factory_end"></a-link>
     <!-- Camera + cursor. -->
-    <a-entity id="rig" rotation="0 90 0">
+    <a-entity id="rig" rotation="0 180 0">
         <a-camera id="camera"></a-camera>  
     </a-entity>
   </a-scene>
