@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>360 Video</title>
+    <meta name="description" content="360 Video — A-Frame">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="../../components/play-on-click.js"></script>
+    <script src="../../components/hide-on-play.js"></script>
+  </head>
+  <body>
+    <script>
+        AFRAME.registerComponent('transfer-to-image', {
+          init: function () {
+            // Code here.
+            console.log(this.el);
+          }
+        });
+      </script>
+    <a-scene>
+      <a-assets>
+        <video id="video"
+               autoplay
+               loop="false"
+               crossorigin="anonymous"
+               playsinline webkit-playsinline
+               src="../../videos/factory.mp4">
+        </video>
+      </a-assets>
+      <a-videosphere
+        rotation="0 -90 0" src="#video"
+        play-on-click>
+      </a-videosphere>
+
+      <a-camera>
+      </a-camera>
+    </a-scene>
+  </body>
+</html>
