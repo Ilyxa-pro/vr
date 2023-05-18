@@ -8,7 +8,7 @@
     <script src="../../components/play-on-click.js"></script>
     <script src="../../components/hide-on-play.js"></script>
   </head>
-  <body>
+  <body onload="setTimeout(onTimerElapsed, 28000);">
     <div id="id" style="width: 200px;
           position: fixed;
           left: 20px;
@@ -17,12 +17,9 @@
       <a href="index.html" style="font-size: 17px; line-height: 20px; white-space: nowrap;font-weight: bold; color: #fff; text-decoration: none;">Go to main page</a>
     </div>
     <script>
-        AFRAME.registerComponent('transfer-to-image', {
-          init: function () {
-            // Code here.
-            console.log(this.el);
-          }
-        });
+        function onTimerElapsed() {
+          location.href = "./factory_guided_end.html";
+        }
       </script>
     <a-scene>
       <a-assets>
