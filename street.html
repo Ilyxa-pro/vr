@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>360&deg; Image Gallery</title>
+  <meta name="description" content="360&deg; Image Gallery - A-Frame">
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+  <script src="components/anchor.js"></script>
+  <script src="components/portal.js"></script>
+  <script src="components/link-controls.js"></script>
+</head>
+
+<body>
+
+  <a-scene cursor="rayOrigin: mouse" raycaster="objects: .link">
+    <a-assets>
+      <img id="street" crossorigin="anonymous" src="./images/street.jpg">
+      <img id="street-thumb" crossorigin="anonymous"
+           src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+      <img id="urfoo" crossorigin="anonymous" src="./images/urfoo.jpg">
+      <img id="urfoo-thumb" crossorigin="anonymous"
+           src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+      <a-asset-item id="roboto" src="./font/Roboto-msdf.json"></a-asset-item>
+    </a-assets>
+
+    <a-entity
+            position="-1.65 1.95 0"
+            scale = "0.4 0.4 0.4"
+            material="color: #16db93"
+            text-geometry="font: #roboto; value: text-geometry, custom font;">
+    </a-entity>
+
+    <!-- 360-degree image. -->
+    <a-sky id="image-360" radius="5" src="#street"
+           animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+           animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"
+           anchor="property: src; delay: 300"
+           proxy-event="event: fade; to: #portal; as: roomChange">
+    </a-sky>
+
+    <a-link class="link" href="urfoo.html#urfoo" position="-4.200 0.600 -0.591" rotation="0 60 0" scale="0.5 0.5 0" title="Go to main corpus URF" image="#urfoo"></a-link>
+
+    <!-- Camera + cursor. -->
+    <a-entity camera look-controls >
+      <a-cursor id="cursor"
+        position="0 0 0"
+        animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+        animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+        event-set__mouseenter="_event: mouseenter; color: springgreen"
+        event-set__mouseleave="_event: mouseleave; color: black" raycaster="objects: .link"></a-cursor>
+    </a-entity>
+
+    <a-text value="Текст" font="Roboto-msdf.json" negate="false" scale="2 2 1" position="-2 2 -4"></a-text>
+  </a-scene>
+
+  <script>
+    const sceneEl = document.querySelector('a-scene');
+    const images = sceneEl.querySelectorAll('a-assets img[id]');
+    if (![...images].some(elem => elem.id === location.hash)) {
+      location.hash = images[0].id
+    }
+  </script>
+</body>
+
+</html>

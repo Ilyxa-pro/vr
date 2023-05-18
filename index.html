@@ -12,17 +12,18 @@
   <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
   <script src="components/anchor.js"></script>
   <script src="components/portal.js"></script>
+  <script src="components/link-controls.js"></script>
 </head>
 
 <body>
 
   <div id="id" style="width: 200px;
-    height: 200px;
-    background-color: #000;
-    position: fixed;
-    left: 20px;
-    top: 20px;
-    z-index: 2;">
+      height: 200px;
+      background-color: #000;
+      position: fixed;
+      left: 20px;
+      top: 20px;
+      z-index: 2;">
     <div class="wrapper" style="height: 100%; width: 100%; position: relative;">
       <div class="point" id="pointer" style="position: absolute; left: 20px; top: 20px; width: 20px; border-radius: 50%; height: 20px; background-color: #fff"></div>
     </div>
@@ -35,30 +36,15 @@
       <img id="urfoo" crossorigin="anonymous" src="./images/urfoo.jpg">
       <img id="urfoo-thumb" crossorigin="anonymous"
            src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-      <img id="enter" crossorigin="anonymous" src="./images/2_floor_max.jpg">
+      <img id="enter" crossorigin="anonymous" src="./images/main.jpg">
       <img id="enter-thumb" crossorigin="anonymous"
            src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-      <img id="ladder" crossorigin="anonymous" src="./images/2_floor_max.jpg">
-      <img id="ladder-thumb" crossorigin="anonymous"
+      <img id="ladder-right" crossorigin="anonymous" src="./images/ladder-right.jpg">
+      <img id="ladder-right-thumb" crossorigin="anonymous"
            src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-      <img id="ladder2" crossorigin="anonymous" src="./images/2_floor_max.jpg">
-      <img id="ladder2-thumb" crossorigin="anonymous"
+      <img id="ladder-left" crossorigin="anonymous" src="./images/ladder-left.jpg">
+      <img id="ladder-left-thumb" crossorigin="anonymous"
            src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-      <img id="city" crossorigin="anonymous" src="./images/2_floor_max.jpg">
-      <!--<img id="test1" crossorigin="anonymous" src="./images/2.jpg">
-      <img id="test2" crossorigin="anonymous" src="./images/3.jpg">
-      <img id="test3" crossorigin="anonymous" src="./images/4.jpg">-->
-      <img id="city-thumb" crossorigin="anonymous"
-        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-      <img id="cubes-thumb" crossorigin="anonymous"
-        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-cubes.jpg">
-      <img id="sechelt-thumb" crossorigin="anonymous"
-        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
-      <audio id="click-sound" crossorigin="anonymous"
-        src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
-      <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
-      <img id="sechelt" crossorigin="anonymous"
-        src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
     </a-assets>
 
     <!-- 360-degree image. -->
@@ -69,24 +55,12 @@
            proxy-event="event: fade; to: #portal; as: roomChange">
     </a-sky>
 
-    <!--<a-entity id="portal" portal="domain:#image-360; startEvent: roomChange; to:#street;from:#urfoo;title:My portal" position="0 0 0"></a-entity>-->
-    <!--<a-entity id="portal" portal="domain:#image-360; startEvent: roomChange; to:#street;from:#urfoo;title:My portal" position="-5 0 0"></a-entity>-->
-    <!--<a-entity id="portal" portal="domain:#image-360; startEvent: roomChange; to:#urfoo;from:#enter;title:My portal 2" position="-3 0 0"></a-entity>-->
-    <!-- <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#urfoo;from:#enter;title:Войти внутрь УРФУ" position="-5 0 0"></a-entity>-->
-    <!--<a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#enter;from:#enter;title:Войти" position="-5 0 0"></a-entity>
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#enter;from:#enter;title:My portal A" position="-5 0 0"></a-entity>
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#urfoo;from:#enter;title:My portal A" position="-5 0 0"></a-entity>
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#cubes;from:#city;title:My portal A" position="-5 0 0"></a-entity>
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#city;from:#sechelt;title:My portal X" position="5 0 -5"></a-entity>
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#sechelt;from:#cubes;title:My portal Y" position="0 0 -5"></a-entity>-->
-    <!--<a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#street;from:#urfoo;title:Главный корпус УРФУ" position="-3.155 0.150 -0.9" rotation="0 40 0"></a-entity>
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#urfoo;from:#enter;title:Главный зал УРФУ" position="-3.155 0.150 -0.9" rotation="0 45 0"></a-entity>-->
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#street;from:#urfoo;title:URF" position="-4.200 0.600 -0.591" rotation="0 60 0" scale="0.5 0.5 0"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#urfoo;from:#enter;title:MAIN" position="-1.680 0.600 -3.440" rotation="0 40 0" scale="0.5 0.5 0"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#enter;from:#ladder-right;title:Right" position="-4.200 0.600 -0.591" rotation="0 230.000 0" scale="0.5 0.5 0"></a-entity>
+    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#enter;from:#ladder-left;title:Left;" position="-3.058 0.239 -2.266" rotation="0 60 0" scale="0.5 0.5 0"></a-entity>
 
-
-    <!--<a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#street;from:#urfoo;title:Главный корпус УРФУ" position="-3 0 -3" rotation="0 60 0"></a-entity>-->
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#street;from:#urfoo;title:URF" position="-4.200 0.600 -0.591" rotation="0 60 0"></a-entity>
-    <a-entity id="portal" class="enter" portal="domain:#image-360;startEvent: roomChange; to:#urfoo;from:#enter;title:MAIN" position="-1.680 0.600 -3.440" rotation="0 40 0"></a-entity>
-    <a-entity id="portal" class="enter" portal="domain:#image-360;startEvent: roomChange; to:#enter;from:#ladder;title:Loader left" position="-3.058 0.239 -2.266" rotation="0 60 0"></a-entity>
+    <a-link font="assets/akzidenz.fnt" class="link" href="copy.html" position="-1.680 0.600 -3.440" rotation="0 60 0" title="TItle" image="#ladder-left"></a-link>
 
     <!-- Camera + cursor. -->
     <a-entity camera look-controls>
@@ -97,7 +71,6 @@
         event-set__mouseleave="_event: mouseleave; color: black" raycaster="objects: .link"></a-cursor>
     </a-entity>
 
-    <a-text value="ABCあいうえお日本語" font="NotoSansDisplay-VariableFont_wdth,wght-msdf.json" font-image="custom-msdf.png" negate="false" scale="2 2 1" position="-2 2 -4"></a-text>
   </a-scene>
 
   <script>
