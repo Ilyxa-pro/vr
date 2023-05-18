@@ -14,6 +14,13 @@
 </head>
 
 <body>
+  <div id="id" style="width: 200px;
+          position: fixed;
+          left: 20px;
+          top: 20px;
+          z-index: 2;">
+    <a href="index.html" style="font-size: 17px; line-height: 20px; white-space: nowrap;font-weight: bold; color: #fff; text-decoration: none;">Go to main page</a>
+  </div>
 
   <a-scene cursor="rayOrigin: mouse" raycaster="objects: .link">
     <a-assets>
@@ -23,7 +30,6 @@
       <img id="urfoo" crossorigin="anonymous" src="./images/urfoo.jpg">
       <img id="urfoo-thumb" crossorigin="anonymous"
            src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-      <a-asset-item id="roboto" src="./font/Roboto-msdf.json"></a-asset-item>
     </a-assets>
 
     <a-entity
@@ -52,8 +58,6 @@
         event-set__mouseenter="_event: mouseenter; color: springgreen"
         event-set__mouseleave="_event: mouseleave; color: black" raycaster="objects: .link"></a-cursor>
     </a-entity>
-
-    <a-text value="Текст" font="Roboto-msdf.json" negate="false" scale="2 2 1" position="-2 2 -4"></a-text>
   </a-scene>
 
   <script>

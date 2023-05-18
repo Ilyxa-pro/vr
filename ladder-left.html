@@ -16,7 +16,13 @@
 </head>
 
 <body>
-
+<div id="id" style="width: 200px;
+        position: fixed;
+        left: 20px;
+        top: 20px;
+        z-index: 2;">
+  <a href="index.html" style="font-size: 17px; line-height: 20px; white-space: nowrap;font-weight: bold; color: #fff; text-decoration: none;">Go to main page</a>
+</div>
 <a-scene cursor="rayOrigin: mouse" raycaster="objects: .link">
   <a-assets>
     <img id="street" crossorigin="anonymous" src="./images/street.jpg">
@@ -25,22 +31,17 @@
     <img id="urfoo" crossorigin="anonymous" src="./images/urfoo.jpg">
     <img id="urfoo-thumb" crossorigin="anonymous"
          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-    <img id="enter" crossorigin="anonymous" src="./images/main.jpg">
+    <img id="enter" crossorigin="anonymous" src="./images/main.jpeg">
     <img id="enter-thumb" crossorigin="anonymous"
          src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-    <img id="ladder-right" crossorigin="anonymous" src="./images/ladder-right.jpg">
-    <img id="ladder-right-thumb" crossorigin="anonymous"
-         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
-    <img id="ladder-left" crossorigin="anonymous" src="./images/ladder-left.jpg">
-    <img id="ladder-left-thumb" crossorigin="anonymous"
-         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+    <img id="ladder-right" crossorigin="anonymous" src="./images/1-floor-loader-right.jpeg">
+    <img id="ladder-left" crossorigin="anonymous" src="./images/ladder-left.jpeg">
     <img id="floor-two" crossorigin="anonymous" src="./images/2_floor_max.jpg">
-    <img id="floor-two-thumb" crossorigin="anonymous"
-         src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
   </a-assets>
 
+
   <!-- 360-degree image. -->
-  <a-sky id="image-360" radius="5" src="#ladder-right"
+  <a-sky id="image-360" radius="5" src="#ladder-left"
          animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
          animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"
          anchor="property: src; delay: 300"
