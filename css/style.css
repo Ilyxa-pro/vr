@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+.section {
+  font-size: 0;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+}
+.section .item {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  width: 50%;
+}
+.section .item img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  object-fit: cover;
+  object-position: 0 50%;
+  transition: transform 1s linear;
+  transform: scale(1);
+  opacity: 0.6;
+}
+.section .item img:hover {
+  transform: scale(1.2);
+}
+.section .item span {
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 48px;
+  color: #fff;
+  font-weight: 900;
+}
+
+/*# sourceMappingURL=style.css.map */

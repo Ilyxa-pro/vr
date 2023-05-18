@@ -16,7 +16,13 @@
 </head>
 
 <body>
-
+  <div id="id" style="width: 200px;
+        position: fixed;
+        left: 20px;
+        top: 20px;
+        z-index: 2;">
+    <a href="index.html" style="font-size: 17px; line-height: 20px; white-space: nowrap;font-weight: bold; color: #fff; text-decoration: none;">Go to main page</a>
+  </div>
   <a-scene cursor="rayOrigin: mouse" raycaster="objects: .link">
     <a-assets>
       <img id="street" crossorigin="anonymous" src="./images/street.jpg">
@@ -39,11 +45,6 @@
            anchor="property: src; delay: 300"
            proxy-event="event: fade; to: #portal; as: roomChange">
     </a-sky>
-
-    <!--<a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#street;from:#urfoo;title:URF" position="-4.200 0.600 -0.591" rotation="0 60 0" scale="0.5 0.5 0"></a-entity>
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#urfoo;from:#enter;title:MAIN" position="-1.680 0.600 -3.440" rotation="0 40 0" scale="0.5 0.5 0"></a-entity>
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#enter;from:#ladder-right;title:Right" position="-4.200 0.600 -0.591" rotation="0 230.000 0" scale="0.5 0.5 0"></a-entity>
-    <a-entity id="portal" portal="domain:#image-360;startEvent: roomChange; to:#enter;from:#ladder-left;title:Left;" position="-3.058 0.239 -2.266" rotation="0 60 0" scale="0.5 0.5 0"></a-entity>-->
 
     <a-link class="link" href="ladder-right.html#ladder-right" position="-0.314 -0.032 -3.450" rotation="0 0 0" scale="0.3 0.3 0" title="Ladder right" image="#ladder-right"></a-link>
     <a-link class="link" href="ladder-left.html#ladder-left"  position="-0.320 -0.188 4.436" rotation="0 0 0" scale="0.3 0.3 0" title="Ladder left" image="#ladder-left"></a-link>
